@@ -3,7 +3,7 @@ import Markdown from "markdown-to-jsx";
 import { Accordion, Badge, Center, Code, Group, Text } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   useNavigate,
   useParams,
@@ -95,8 +95,7 @@ function AccordianItem({ id, heading, text }: AccordianItemProps) {
     </Accordion.Item>
   );
 }
-
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Root />,
