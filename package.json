@@ -1,12 +1,12 @@
 {
-  "name": "markdown-to-jsx-example",
-  "homepage": "https://riadafridishibly.github.io/dev",
+  "name": "dev",
+  "homepage": "https://riadafridishibly.github.io/dev/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
