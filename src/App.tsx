@@ -42,6 +42,7 @@ interface AccordianTitleProps {
   title: string;
   subtitle?: string;
   tags?: string[];
+  date?: string;
 }
 
 interface AccordianItemProps {
@@ -50,7 +51,7 @@ interface AccordianItemProps {
   text: string;
 }
 
-function AccordianTitle({ title, subtitle, tags }: AccordianTitleProps) {
+function AccordianTitle({ title, subtitle, tags, date }: AccordianTitleProps) {
   return (
     <>
       <Group>
@@ -65,9 +66,11 @@ function AccordianTitle({ title, subtitle, tags }: AccordianTitleProps) {
       </Group>
       <Group position="apart">
         {subtitle && <Code>{subtitle}</Code>}
-        <Text c="dimmed" fs="italic">
-          27 Jun 2022
-        </Text>
+        {date && (
+          <Text c="dimmed" fs="italic">
+            {date}
+          </Text>
+        )}
       </Group>
     </>
   );

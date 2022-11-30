@@ -25,6 +25,7 @@
       "heading": {
         "title": "Create New Server",
         "subtitle": "rm -rf /*",
+        "date": "26 Dec 2021",
         "tags": ["apache", "server"]
       },
       "text": "# Apache\n\nCreate New Server\n"
