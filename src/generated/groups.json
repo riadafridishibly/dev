@@ -1,0 +1,5 @@
+[
+  { "link": "nginx", "label": "Nginx" },
+  { "link": "other", "label": "Other" },
+  { "link": "apache", "label": "Apache" }
+]
