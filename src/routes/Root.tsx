@@ -9,7 +9,7 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { IconSignature } from "@tabler/icons";
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { NavbarSimple } from "../components/Nav";
 
 function Root() {
@@ -36,7 +36,12 @@ function Root() {
 
             <Group>
               <IconSignature stroke={1.5} />
-              <Text>Tiny Blog</Text>
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                to={"/"}
+              >
+                <Text>Dev Blog</Text>
+              </Link>
             </Group>
           </div>
         </Header>
