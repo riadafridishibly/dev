@@ -1,22 +1,23 @@
 import {
   AppShell,
-  Container,
   Text,
   Header,
   MediaQuery,
   Burger,
   Group,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconSignature } from "@tabler/icons";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { NavbarSimple } from "../components/Nav";
 
 function Root() {
+  const matches = useMediaQuery(`(max-width: 900px)`);
   const [opened, setOpened] = React.useState(false);
   return (
     <AppShell
-      padding="lg"
+      padding={matches ? 0 : "lg"}
       navbar={<NavbarSimple opened={opened} setOpened={setOpened} />}
       header={
         <Header height={{ base: 50, md: 50 }} p="md">
@@ -49,9 +50,8 @@ function Root() {
         },
       })}
     >
-      <Container>
-        <Outlet />
-      </Container>
+      <Outlet />
+      {/* <Container fluid={true}></Container> */}
     </AppShell>
   );
 }

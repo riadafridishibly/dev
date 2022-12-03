@@ -160,8 +160,8 @@ function GroupItems() {
         <AccordianItem
           key={item.id}
           id={item.id}
-          heading={item.heading}
-          text={item.text}
+          heading={item.header}
+          text={item.body}
         />
       ))}
     </Accordion>
