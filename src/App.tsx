@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import Markdown from "markdown-to-jsx";
-import { Accordion, Badge, Center, Code, Group, Text } from "@mantine/core";
+import {
+  Accordion,
+  Badge,
+  Center,
+  Code,
+  Group,
+  Text,
+  Title,
+} from "@mantine/core";
 import { Prism } from "@mantine/prism";
 import {
   createHashRouter,
@@ -18,40 +26,28 @@ const MyCode = ({
   className: string;
   children: string;
 }) => {
+  if (className === undefined) {
+    return <Code>{children}</Code>;
+  }
   const language = className.replace("lang-", "");
   // @ts-ignore
   return <Prism language={language}>{children}</Prism>;
 };
 
-interface OrderdKeys {
-  keys: string[];
-  children?: {
-    [key: string]: OrderdKeys;
-  };
-}
-
-const orderd_keys: OrderdKeys = {
-  keys: ["group1", "group2"],
-  children: {
-    group1: { keys: ["a", "b"] },
-    group2: { keys: ["a", "b"] },
-  },
-};
-
-interface AccordianTitleProps {
+interface AccordionTitleProps {
   title: string;
   subtitle?: string;
   tags?: string[];
   date?: string;
 }
 
-interface AccordianItemProps {
-  heading: AccordianTitleProps;
+interface AccordionItemProps {
+  heading: AccordionTitleProps;
   id: string;
   text: string;
 }
 
-function AccordianTitle({ title, subtitle, tags, date }: AccordianTitleProps) {
+function AccordionTitle({ title, subtitle, tags, date }: AccordionTitleProps) {
   return (
     <>
       <Group>
@@ -76,11 +72,11 @@ function AccordianTitle({ title, subtitle, tags, date }: AccordianTitleProps) {
   );
 }
 
-function AccordianItem({ id, heading, text }: AccordianItemProps) {
+function AccordionItem({ id, heading, text }: AccordionItemProps) {
   return (
     <Accordion.Item value={id}>
       <Accordion.Control>
-        <AccordianTitle {...heading} />
+        <AccordionTitle {...heading} />
       </Accordion.Control>
       <Accordion.Panel>
         <Markdown
@@ -103,6 +99,16 @@ const router = createHashRouter([
     path: "/",
     element: <Root />,
     children: [
+      {
+        index: true,
+        element: (
+          <Center>
+            <Text fz="lg" fw={300} fs="italic">
+              Select any item from side navbar
+            </Text>
+          </Center>
+        ),
+      },
       {
         path: "/:group",
         element: <GroupItems />,
@@ -157,7 +163,7 @@ function GroupItems() {
       variant="separated"
     >
       {groupItems.map((item, i) => (
-        <AccordianItem
+        <AccordionItem
           key={item.id}
           id={item.id}
           heading={item.header}
